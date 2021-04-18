@@ -17,13 +17,14 @@ bin/kafka-topics.sh --create \
 
 Run `maven clean install` and generate jar artifact of this project.
 
-Open terminal and start 4 app instances.
+To demonstrate resilience of consuming Kafka messages, open terminal and start 4 app instances. Since our Kafka topic
+has 4 partitions, each app instance will consume only 1 partition.
 
 1. java -jar -Dserver.port=8080 target/kafka_demo-0.0.1-SNAPSHOT.jar
 2. java -jar -Dserver.port=8081 target/kafka_demo-0.0.1-SNAPSHOT.jar
 3. java -jar -Dserver.port=8082 target/kafka_demo-0.0.1-SNAPSHOT.jar
 4. java -jar -Dserver.port=8083 target/kafka_demo-0.0.1-SNAPSHOT.jar
 
-Browse http://localhost:8080/ to send 1000 messages to Kafka topic. Each app instance will handle one of the 4 Kafka
-partitions. Kill one of the app instances then verify that one of the running 3 app instances will handle 2 Kafka
-partitions.
+Browse http://localhost:8080/ to send 1000 messages to Kafka topic. Check the logs that each app instance handles one of
+the 4 Kafka partitions. Kill one of the app instances then verify that one of the running 3 app instances handles 2
+Kafka partitions.
