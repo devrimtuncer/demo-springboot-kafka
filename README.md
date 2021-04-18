@@ -21,3 +21,5 @@ Open terminal and start 4 instances.
 3. java -jar -Dserver.port=8082 target/kafka_demo-0.0.1-SNAPSHOT.jar
 4. java -jar -Dserver.port=8083 target/kafka_demo-0.0.1-SNAPSHOT.jar
 
+Browse http://localhost:8080/ to send 1000 messages to Kafka topic.
+
