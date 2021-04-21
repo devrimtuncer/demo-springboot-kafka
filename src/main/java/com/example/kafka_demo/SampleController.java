@@ -15,13 +15,13 @@ public class SampleController {
     }
 
     /**
-     * Sends 1000 messages to topic
+     * Sends 10000 messages to topic
      *
      * @return
      */
     @GetMapping("/")
     public String send() {
-        IntStream.range(0, 1000).parallel().forEach(
+        IntStream.range(0, 10000).parallel().forEach(
                 i -> {
                     Person person = new Person(String.format("Person %s", i), i);
                     kafkaProducerService.send(person);
